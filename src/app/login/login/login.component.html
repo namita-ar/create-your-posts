@@ -1,0 +1,23 @@
+<div class="form_wrapper">
+    <div class="form_container">
+      <div class="title_container">
+        <h2>WELCOME BACK!</h2>
+        <h5>Login to continue</h5>
+      </div>
+      <div class="row clearfix">
+        <div class="">
+          <form [formGroup]="loginForm">
+           
+            <div class="input_field"> <span><i aria-hidden="true" class="pi pi-envelope"></i></span>
+              <input type="email" name="email" placeholder="Email" formControlName="email" required />
+            </div>
+            <div class="input_field"> <span><i aria-hidden="true" class="pi pi-lock"></i></span>
+              <input type="password" name="password" formControlName="password" placeholder="Password" required />
+            </div>
+          
+            <input class="button" type="submit" value="Log in" (click)="login()"/>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

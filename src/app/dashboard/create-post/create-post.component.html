@@ -1,0 +1,26 @@
+<div class="container d-flex h-100">
+   
+        <div class="form_wrapper">
+            <div class="form_container">
+             
+              <div class="row clearfix">
+                <div class="">
+                  <form [formGroup]="createForm" >
+                   
+                    <div class="input_field"> 
+                      <input type="text" name="title" placeholder="Title" required formControlName="title" />
+                    </div>
+                    <div class="input_field">
+                      <textarea name="textarea" placeholder="Content" rows="10" required formControlName="body"></textarea>
+                    </div>
+                  
+                    <input class="button" type="submit" value="save" (click)="createFormSubmit()"/>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+    
+
+</div>
+

@@ -1,0 +1,51 @@
+<div class="form_wrapper">
+    <div class="form_container">
+      <div class="title_container">
+        <h2>REGISTER NOW</h2>
+      </div>
+      <div class="row clearfix">
+        <div class="">
+          <form [formGroup]="registerForm">
+            <div class="row clearfix">
+                <div class="col_half">
+                  <div class="input_field"> <span><i aria-hidden="true" class="pi pi-user"></i></span>
+                    <input type="text" name="name" placeholder="First Name" formControlName="firstName" 
+                    [ngClass]="{'failed-valid': (registrationSubmitted && r.firstName.errors) }"
+                    data-error="Name is required"/>
+                  </div>
+                </div>
+                <div class="col_half">
+                  <div class="input_field"> <span><i aria-hidden="true" class="pi pi-user"></i></span>
+                    <input type="text" name="name" placeholder="Last Name" formControlName="lastName"  
+                    [ngClass]="{'failed-valid': (registrationSubmitted && r.lastName.errors) }"/>
+                  </div>
+                </div>
+              </div>
+            <div class="input_field"> <span><i aria-hidden="true" class="pi pi-envelope"></i></span>
+              <input type="email" name="email" placeholder="Email" formControlName="email"  
+              [ngClass]="{'failed-valid': (registrationSubmitted && r.email.errors) }"/>
+            </div>
+            <div class="input_field"> <span><i aria-hidden="true" class="pi pi-lock"></i></span>
+              <input type="password" name="password" formControlName="password" placeholder="Password" 
+              [ngClass]="{'failed-valid': (registrationSubmitted && r.password.errors) }" />
+              <div *ngIf="!r.password.errors?.required && r.password.errors?.pattern"
+              class="alert alert-danger">
+              Password must have min of 1 character ,uppercase,lowercase,numeric and min length of 6
+             </div>
+             
+            
+            </div>
+            <div class="input_field"> <span><i aria-hidden="true" class="pi pi-lock"></i></span>
+              <input type="password" name="password" formControlName="confirmPassword" placeholder="Re-type Password"  
+              [ngClass]="{'failed-valid': (registrationSubmitted && r.confirmPassword.errors) }"/>
+             
+            </div>
+           
+                 
+             
+            <input class="button" type="submit" value="Register" (click)="register()" />
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

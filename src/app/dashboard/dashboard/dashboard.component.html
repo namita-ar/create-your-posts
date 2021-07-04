@@ -1,0 +1,81 @@
+
+<div class="d-flex h-100">
+    <div class="d-flex flex-grow-1 h-100 justify-content-center">
+        <div *ngIf="collection.length>0">
+            <h4>View All Posts</h4>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Item</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of collection | paginate: config">
+                        <th scope="row">{{ item.id }}</th>
+                        <td>{{ item.title }}</td>
+                        <td width="5%" class="text-right">
+                            <div>
+                                <button (click)="editPost(item.id)" class="remove-button">
+                                    <i class="pi pi-pencil"></i>
+                                </button>
+                            </div>
+                        </td>
+                        <td width="5%" class="text-right">
+                            <div>
+                                <button (click)="deletePost(item.id)" class="remove-button">
+                                    <i class="pi pi-trash"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+        </div>
+
+        
+    </div>
+    <p-dialog [(visible)]="showDialog" [draggable]="false" [modal]="true"  appendTo="body"
+    position="top" 
+    class="md-popup custom-ui-dialogue">
+        <div class="form_wrapper">
+            <div class="form_container">
+             
+              <div class="row clearfix">
+                <div class="">
+                  <form [formGroup]="editForm" >
+                   
+                    <div class="input_field"> 
+                      <input type="text" name="title" placeholder="Title" required formControlName="title" />
+                    </div>
+                    <div class="input_field">
+                      <textarea name="textarea" placeholder="Content" rows="10" required formControlName="body"></textarea>
+                    </div>
+                  
+                    <input class="button" type="submit" value="save" (click)="editFormSubmit()"/>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+    
+    </p-dialog>
+    
+    
+    <p-dialog [(visible)]="showDeleteComfirm"
+     [draggable]="false" [modal]="true" class="md-popup custom-ui-dialogue">
+        <p-header>
+            <h3>Do you want to delete?</h3>
+        </p-header>
+        <p-footer >
+            <button type="button"  label="No" (click)="showDeleteComfirm = false"><i class="pi pi-times"></i></button>
+            <button type="button" label="Yes" (click)="delete()"><i class="pi pi-check"></i></button>
+        </p-footer>
+    </p-dialog>
+    
+</div>

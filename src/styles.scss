@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+.failed-valid {
+    border-color: red !important;
+  }
+.alert {
+padding: 0;
+margin-top: 0.2rem;
+margin-top: 0.2rem;
+font-size: 0.8rem;
+font-weight: 500;
+background: rgb(248, 162, 162);
+border: none;
+&.alert-danger {
+    color: #c93a25;
+
+}
+}
